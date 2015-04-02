@@ -39,16 +39,12 @@ $.fn.alajax = function (options){
             beforeSend: function (){
                 // add code here if you want to do something before sending the form
                 settings.beforeSend();
-            },
-            success: function(data, textStatus, jqXHR){
-                // Add code here when send is successful.
-                settings.success(data);
-            },
-            error: function (jqXHR, textStatus, errorThrown){
-                //alert(errorThrown);
-                settings.error();
             }
-            
+        }).done(function(data, textStatus, jqXHR){
+                settings.success(data);
+        }).fail(function(jqXHR, textStatus, errorThrown){
+                //alert(errorThrown)
+                settings.error();
         });
     }
     
